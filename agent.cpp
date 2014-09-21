@@ -21,5 +21,6 @@ int main()
 {
    Task task_info("input.txt");
    task_info.PrintTaskInfo();
-   return (0); 
+   return (1); 
 }
+
