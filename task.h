@@ -1,21 +1,17 @@
 #ifndef TASK_H
 #define TASK_H
-#include <iostream>
-#include <sstream>
-#include <fstream>
-#include <string>
-#include <vector>
+#include "common.h"
 using namespace std;
 class Task
 {
 public: 
     int task;
-    string node_src;
-    int node_src_index;
-    string node_des;
-    int node_des_index;
     int node_number;
-    vector<string> node_names;
+    int src_index;
+    int dst_index;
+    string src_name;
+    string dst_name;
+    vector<node_info> nodes;
     vector< vector<int> > distance;
 
     Task(const string &inputFileName);

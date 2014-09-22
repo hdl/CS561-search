@@ -8,4 +8,4 @@ task.o:
 run: agent
 	./agent
 clean:
-	rm -rf agent
+	rm -rf agent *.o

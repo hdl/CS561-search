@@ -1,5 +1,9 @@
 #include "task.h"
+#include "common.h"
 using namespace std;
+
+// return find(nodes.begin(), nodes.end(), node) - nodes.begin();
+
 Task::Task(const string &inputFileName)
     {
          int i=0, j=0;
@@ -9,16 +13,17 @@ Task::Task(const string &inputFileName)
          inputFile.open(inputFileName, ios::in);
          getline(inputFile, line);
          task=stoi(line, nullptr);
-         getline(inputFile, node_src);
-         getline(inputFile, node_des);
+         getline(inputFile, src_name);
+         getline(inputFile, dst_name);
          getline(inputFile, line);
          node_number=stoi(line, nullptr);
-	 node_names.resize(node_number);
+	 nodes.resize(node_number);
+         // memset(&nodes, 0, node_number * sizeof(node_info));
+	 // cout << node_number << "size:" << nodes.size() <<endl;
          for(i = 0; i < node_number; i++){
-             getline(inputFile, node_names[i]);
+	     nodes[i].index = i;
+             getline(inputFile, nodes[i].name);
          }
-	 node_src_index=find(node_names.begin(), node_names.end(), node_src) - node_names.begin();
-	 node_des_index=find(node_names.begin(), node_names.end(), node_des) - node_names.begin();
 
 	 distance.resize(node_number);
          for(i = 0; i < node_number; i++){
@@ -29,17 +34,26 @@ Task::Task(const string &inputFileName)
                    ss >> distance[i][j];
 	     }
 	 }
-         inputFile.close(); 
+         inputFile.close();
+	 // set src/dst node index
+         for(i = 0; i < node_number; i++){
+		 if(nodes[i].name==src_name){
+			src_index=i; 
+		 } 
+		 if(nodes[i].name==dst_name){
+			dst_index=i; 
+		 } 
+	 }
     }
 void Task::PrintTaskInfo()
     {
 	 int i, j;
 	 cout << task << endl;
-	 cout << node_src_index << node_names[node_src_index] << endl;
-	 cout << node_des_index << node_names[node_des_index] << endl;
+	 cout << src_index << nodes[src_index].name << endl;
+	 cout << dst_index << nodes[dst_index].name << endl;
 	 cout << node_number << endl;
          for(i = 0; i < node_number; i++){
-	     cout << node_names[i] << endl;
+	     cout << i << nodes[i].index << nodes[i].name << endl;
          }
 	 for(i = 0; i < node_number; i++){
              for(j = 0; j < node_number; j++){
