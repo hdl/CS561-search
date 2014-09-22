@@ -1,4 +1,6 @@
 *.swp
+*.txt
 *.o
+*.out
 agent
 .DS_Store

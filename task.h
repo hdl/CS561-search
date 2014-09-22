@@ -13,8 +13,13 @@ public:
     string dst_name;
     vector<node_info> nodes;
     vector< vector<int> > distance;
+    ofstream outputFile;
 
     Task(const string &inputFileName);
     void PrintTaskInfo();
+    void CheckFinish(bool finished);
+    void PrintExpansion(queue<int> Q);
+    void PrintOutput();
+    void PrintPathCost();
 };
 #endif
