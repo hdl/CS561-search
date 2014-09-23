@@ -22,4 +22,6 @@ public:
     void PrintOutput();
     void PrintPathCost();
 };
+extern Task * task_info_p;
+extern bool compare_by_name(int a, int b);
 #endif

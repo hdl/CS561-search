@@ -7,7 +7,9 @@
 #include <vector>
 #include <queue>
 #include <stack>
+#include "task.h"
 using namespace std;
+
 typedef struct node_info_t{
     string name;
     int index;
@@ -16,4 +18,5 @@ typedef struct node_info_t{
     int parent;
     bool visited;
 }node_info;
+
 #endif

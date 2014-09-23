@@ -9,9 +9,6 @@ public:
     bool finished;
     queue<int> expansion_q;    
     BFS(Task &task_info);
-    void PrintExpansion();
-    void PrintOutput();
-    void PrintPathCost();
 };
 
 #endif
