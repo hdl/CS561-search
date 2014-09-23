@@ -8,9 +8,9 @@ Task::Task(const string &inputFileName)
      string line;
      stringstream ss;
      fstream inputFile;
-     inputFile.open(inputFileName, ios::in);
+     inputFile.open(inputFileName.c_str());
      getline(inputFile, line);
-     task=stoi(line, nullptr);
+     task=atoi(line.c_str());
      getline(inputFile, src_name);
      getline(inputFile, dst_name);
      if(!src_name.empty() && src_name[src_name.size() - 1]=='\r')
@@ -18,10 +18,13 @@ Task::Task(const string &inputFileName)
      if(!dst_name.empty() && dst_name[dst_name.size() - 1]=='\r')
          dst_name.erase(dst_name.size()-1);
      getline(inputFile, line);
-     node_number=stoi(line, nullptr);
+     node_number=atoi(line.c_str());
      nodes.resize(node_number);
      for(i = 0; i < node_number; i++){
          nodes[i].index = i;
+         nodes[i].path_cost = 0;
+         nodes[i].parent = 0;
+         nodes[i].visited= 0;
          getline(inputFile, nodes[i].name);
 	 if(!nodes[i].name.empty() && nodes[i].name[nodes[i].name.size() - 1]=='\r'){
              nodes[i].name.erase(nodes[i].name.size()-1);
