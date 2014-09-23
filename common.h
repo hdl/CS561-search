@@ -19,4 +19,7 @@ typedef struct node_info_t{
     bool visited;
 }node_info;
 
+extern bool compare_by_name(int a, int b);
+extern void sort_children(int parent_index, vector<int> &temp_children);
+
 #endif
