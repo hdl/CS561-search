@@ -20,8 +20,10 @@ DFS::DFS(Task &task_info)
         }
 
 		sort_children(parent_index, temp_children);
-		if (temp_children.size()==0)
+		if (temp_children.size()==0){
+			cout << "no children!" << endl;
 			return;
+		}
 
 		// real dfs loop
         for(i = temp_children.size()-1; i>=0; i--) {
