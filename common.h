@@ -17,6 +17,14 @@ typedef struct node_info_t{
     int path_cost;
     int parent;
     bool visited;
+	bool in_vector(vector<int> nodes_index)
+	{
+		for(int i=0; i<nodes_index.size(); i++){
+			if(index==nodes_index[i])
+				return 1;
+		}
+		return 0;
+	}
 }node_info;
 
 extern bool compare_by_name(int a, int b);
