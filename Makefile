@@ -8,6 +8,8 @@ bfs.o:
 	g++ -g -c bfs.cpp
 dfs.o:
 	g++ -g -c dfs.cpp
+ucs.o:
+	g++ -g -c ucs.cpp
 run:
 	./agent
 	cat output.txt

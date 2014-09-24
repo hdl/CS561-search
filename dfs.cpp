@@ -8,10 +8,11 @@ DFS::DFS(Task &task_info)
 	int parent_index;
 	int i;
 	S.push(task_info.src_index);
-
+// it's possible that a node pop out two times 
 	while(!S.empty()){
 		parent_index = S.top();
 		S.pop();
+		cout << "POP: " << task_info.nodes[parent_index].name << endl; 
 		task_info.nodes[parent_index].visited=1;
         expansion_q.push(parent_index);
         if(parent_index == task_info.dst_index){
@@ -22,17 +23,17 @@ DFS::DFS(Task &task_info)
 		sort_children(parent_index, temp_children);
 		if (temp_children.size()==0){
 			cout << "no children!" << endl;
-			return;
+			continue;
 		}
 
 		// real dfs loop
         for(i = temp_children.size()-1; i>=0; i--) {
-            cout << "PUSH alphtical: " << task_info.nodes[temp_children[i]].name << endl; 
+            cout << "PUSH " << task_info.nodes[temp_children[i]].name; 
         	S.push(temp_children[i]);
         	task_info.nodes[temp_children[i]].parent=parent_index;
         	task_info.nodes[temp_children[i]].path_cost=task_info.nodes[parent_index].path_cost + task_info.distance[parent_index][temp_children[i]] ;
-        	cout << "Cost so far: " << task_info.nodes[temp_children[i]].path_cost << endl;
+        	cout << " Cost: " << task_info.nodes[temp_children[i]].path_cost << endl;
         }
         temp_children.clear();
-        }
+    }
 }
