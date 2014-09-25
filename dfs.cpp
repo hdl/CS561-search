@@ -8,7 +8,7 @@ DFS::DFS(Task &task_info)
 	int parent_index;
 	int i;
 	S.push(task_info.src_index);
-// it's possible that a node pop out two times 
+	
 	while(!S.empty()){
 		parent_index = S.top();
 		S.pop();
@@ -43,9 +43,15 @@ void sort_children(int parent_index, vector<int> &temp_children){
 	int i;
     for(i = 0; i<task_info_p->node_number; i++)
     	{
-    		if(task_info_p->distance[parent_index][i] != 0 && task_info_p->nodes[i].visited == 0){
-    			temp_children.push_back(i);
-    		}
+    		if(task_info_p->distance[parent_index][i] != 0){
+				if(task_info_p->nodes[i].visited == 0){
+    				temp_children.push_back(i);
+    			}
+				else{ // only if the cost less than close and open 
+					
+				}
+			}
+
     	}
 	sort(temp_children.begin(), temp_children.end(), compare_by_name);
 }

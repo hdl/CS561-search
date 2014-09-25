@@ -34,6 +34,7 @@ BFS::BFS(Task &task_info)
 		parent_index = opened_vector[0];
 		opened_vector.erase(opened_vector.begin());
         cout << "POP: " << task_info.nodes[parent_index].name<< endl;
+		task_info.nodes[parent_index].close_path_cost=task_info.nodes[parent_index].path_cost;
 		closed_vector.push_back(parent_index);
 		expansion_q.push(parent_index);
 
