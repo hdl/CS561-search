@@ -16,7 +16,9 @@ typedef struct node_info_t{
     int path_cost; //algorithm path, not real cost
 	int close_path_cost; // the cost when it close
     int parent;
-    bool visited;
+    bool in_close;
+    bool in_open;
+    bool disable;
 }node_info;
 
 extern bool compare_by_cost_name(int a, int b);

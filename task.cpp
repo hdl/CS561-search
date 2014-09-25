@@ -25,7 +25,9 @@ Task::Task(const string &inputFileName)
          nodes[i].path_cost = 0;
          nodes[i].close_path_cost = 0;
          nodes[i].parent = 0;
-         nodes[i].visited= 0;
+         nodes[i].in_open= 0;
+         nodes[i].in_close= 0;
+         nodes[i].disable= 0;
          getline(inputFile, nodes[i].name);
 	 if(!nodes[i].name.empty() && nodes[i].name[nodes[i].name.size() - 1]=='\r'){
              nodes[i].name.erase(nodes[i].name.size()-1);
