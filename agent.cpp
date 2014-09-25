@@ -48,16 +48,3 @@ bool compare_by_cost_name(int a, int b){
 	else 
 		return 0;
 }
-
-void sort_children(int parent_index, vector<int> &temp_children){
-	int i;
-    for(i = 0; i<task_info_p->node_number; i++)
-    	{
-    		if(task_info_p->distance[parent_index][i] != 0 && task_info_p->nodes[i].visited == 0){
-    			temp_children.push_back(i);
-    		}
-    	}
-	sort(temp_children.begin(), temp_children.end(), compare_by_name);
-}
-
-

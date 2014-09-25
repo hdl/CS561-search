@@ -30,6 +30,7 @@ DFS::DFS(Task &task_info)
         for(i = temp_children.size()-1; i>=0; i--) {
             cout << "PUSH " << task_info.nodes[temp_children[i]].name; 
         	S.push(temp_children[i]);
+		    task_info.nodes[temp_children[i]].visited=1;
         	task_info.nodes[temp_children[i]].parent=parent_index;
         	task_info.nodes[temp_children[i]].path_cost=task_info.nodes[parent_index].path_cost + task_info.distance[parent_index][temp_children[i]] ;
         	cout << " Cost: " << task_info.nodes[temp_children[i]].path_cost << endl;
@@ -37,3 +38,16 @@ DFS::DFS(Task &task_info)
         temp_children.clear();
     }
 }
+
+void sort_children(int parent_index, vector<int> &temp_children){
+	int i;
+    for(i = 0; i<task_info_p->node_number; i++)
+    	{
+    		if(task_info_p->distance[parent_index][i] != 0 && task_info_p->nodes[i].visited == 0){
+    			temp_children.push_back(i);
+    		}
+    	}
+	sort(temp_children.begin(), temp_children.end(), compare_by_name);
+}
+
+
