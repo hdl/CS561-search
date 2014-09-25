@@ -23,6 +23,7 @@ Task::Task(const string &inputFileName)
      for(i = 0; i < node_number; i++){
          nodes[i].index = i;
          nodes[i].path_cost = 0;
+         nodes[i].close_path_cost = 0;
          nodes[i].parent = 0;
          nodes[i].visited= 0;
          getline(inputFile, nodes[i].name);
@@ -101,23 +102,26 @@ void Task::PrintExpansion(queue<int> Q)
 
 void Task::PrintOutput()
 {
-	stack<int> S;
-	int i;
-	i = dst_index;
-	while(i != src_index) {
-		S.push(i);
-		i = nodes[i].parent;
+    int parent_index=nodes[dst_index].parent;
+    string output=nodes[dst_index].name+"\n";	
+	while(parent_index!=src_index){
+        output=nodes[parent_index].name+'-'+output;	
+		parent_index = nodes[parent_index].parent;
 	}
-	outputFile << nodes[i].name << "-" << nodes[S.top()].name << "-";
-	S.pop();
-	while(S.size()!=1){
-		outputFile << nodes[S.top()].name << "-";
-		S.pop();
-	}
-	outputFile << nodes[S.top()].name << endl;
+    output=nodes[parent_index].name+'-'+output;	
+	outputFile << output;
 }
 void Task::PrintPathCost()
 {
-	outputFile << nodes[dst_index].path_cost;
+	int child_index=dst_index;
+    int parent_index=nodes[dst_index].parent;
+    int real_path_cost = 0;	
+	while(parent_index!=src_index){
+		real_path_cost += distance[parent_index][child_index];
+		child_index = parent_index;
+		parent_index = nodes[child_index].parent;
+	}
+	real_path_cost += distance[src_index][child_index];
+	outputFile << real_path_cost;
 	outputFile.close();
 }

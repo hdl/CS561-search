@@ -1,5 +1,5 @@
-agent: clean agent.o task.o bfs.o dfs.o
-	g++ -g -o agent agent.o task.o bfs.o dfs.o
+agent: clean agent.o task.o bfs.o dfs.o ucs.o
+	g++ -g -o agent agent.o task.o bfs.o dfs.o ucs.o
 agent.o:
 	g++ -g -c agent.cpp 
 task.o:
