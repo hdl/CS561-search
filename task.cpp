@@ -83,6 +83,7 @@ void Task::CheckFinish(bool finished)
 {
 	if(finished == 0){
 		outputFile << "NoPathAvailable";
+	    outputFile.close();
 		exit(0);	
 	}
 		
