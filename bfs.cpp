@@ -71,16 +71,18 @@ BFS::BFS(Task &task_info)
                 cout << "PUSH: " << task_info.nodes[child].name << endl;
 			}
 			else if(in_vector(child, opened_vector)){
-				if(task_info.nodes[parent_index].path_cost+1< task_info.nodes[child].path_cost){
+				if(task_info.nodes[parent_index].path_cost+1 < task_info.nodes[child].path_cost){
+					// no push, because it already in opened_vector
 					task_info.nodes[child].path_cost= task_info.nodes[parent_index].path_cost+1;
 				    task_info.nodes[child].parent = parent_index;
 				    // this new path to a child is better, set the new path_cost and parent for this child
                     cout << "update open: " << task_info.nodes[child].name << endl;
 				}
 			}else if(in_vector(temp_children[i], closed_vector)){
-				if(task_info.nodes[parent_index].path_cost+1< task_info.nodes[child].close_path_cost){
-					task_info.nodes[child].path_cost= task_info.nodes[parent_index].path_cost+1;
+				if(task_info.nodes[parent_index].path_cost+1 < task_info.nodes[child].close_path_cost){
 					opened_vector.push_back(child);
+					task_info.nodes[child].path_cost= task_info.nodes[parent_index].path_cost+1;
+				    task_info.nodes[child].parent = parent_index;
 					// has a better path for a closed node, recovery it. set new path_cost and parent
 					// remove it from closed_vector
 					remove_from_vector(child, closed_vector);
