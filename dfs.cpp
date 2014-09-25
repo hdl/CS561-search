@@ -15,7 +15,7 @@ DFS::DFS(Task &task_info)
 		//cout << "POP: " << task_info.nodes[parent_index].name << endl;
 	    // put it into virtual close queue
 		task_info.nodes[parent_index].close_path_cost=task_info.nodes[parent_index].path_cost;
-		task_info.nodes[parent_index].in_close=1;
+		task_info.nodes[parent_index].in_open=1;
         expansion_q.push(parent_index);
         if(parent_index == task_info.dst_index){
         	finished = 1;
