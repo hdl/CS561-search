@@ -14,22 +14,22 @@ int main()
    //task_info.PrintTaskInfo();
    if (task_info.task == 1){
        BFS bfs(task_info);
-       task_info.CheckFinish(bfs.finished);
        task_info.PrintExpansion(bfs.expansion_q);
+       task_info.CheckFinish(bfs.finished);
        task_info.PrintOutput();
        task_info.PrintPathCost();
    }
    if (task_info.task == 2){
        DFS dfs(task_info);
-       task_info.CheckFinish(dfs.finished);
        task_info.PrintExpansion(dfs.expansion_q);
+       task_info.CheckFinish(dfs.finished);
        task_info.PrintOutput();
        task_info.PrintPathCost();
    }
    if (task_info.task == 3){
        UCS ucs(task_info);
-       task_info.CheckFinish(ucs.finished);
        task_info.PrintExpansion(ucs.expansion_q);
+       task_info.CheckFinish(ucs.finished);
        task_info.PrintOutput();
        task_info.PrintPathCost();
    }

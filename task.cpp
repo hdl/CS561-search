@@ -81,7 +81,6 @@ void Task::PrintTaskInfo()
 }
 void Task::CheckFinish(bool finished)
 {
-	outputFile.open("output.txt");
 	if(finished == 0){
 		outputFile << "NoPathAvailable" << endl;
 		exit(0);	
@@ -92,6 +91,7 @@ void Task::CheckFinish(bool finished)
 void Task::PrintExpansion(queue<int> Q)
 {
 	int i;
+	outputFile.open("output.txt");
 	while(Q.size()!=1){
 		i=Q.front();
 		Q.pop();
