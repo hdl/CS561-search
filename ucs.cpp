@@ -16,7 +16,7 @@ bool remove_from_vector(int a, vector<int> &a_vector)
 			return 1;
 		}
 	}
-	cout << "can find this child in closed vector" << endl;
+	// cout << "can find this child in closed vector" << endl;
 	return 0;
 }
 UCS::UCS(Task &task_info)
@@ -33,7 +33,7 @@ UCS::UCS(Task &task_info)
 	while(!opened_vector.empty()){
 		parent_index = opened_vector[0];
 		opened_vector.erase(opened_vector.begin());
-        cout << "POP: " << task_info.nodes[parent_index].name<< endl;
+        // cout << "POP: " << task_info.nodes[parent_index].name<< endl;
 		task_info.nodes[parent_index].close_path_cost=task_info.nodes[parent_index].path_cost;
 		closed_vector.push_back(parent_index);
 		expansion_q.push(parent_index);
@@ -52,7 +52,7 @@ UCS::UCS(Task &task_info)
 		}
 
 		if (temp_children.size()==0){
-			cout << "no children " << endl;
+			// cout << "no children " << endl;
 		    sort(opened_vector.begin(), opened_vector.end(), compare_by_cost_name);
 			continue;
 		}
@@ -62,13 +62,13 @@ UCS::UCS(Task &task_info)
 		{
 			int child = temp_children[i];
 			if(in_vector(child, opened_vector) && in_vector(child, closed_vector)){
-				cout << child << " in both open and close" << endl;
+				// cout << child << " in both open and close" << endl;
 				return;
 			}else if(!in_vector(child, opened_vector) && !in_vector(child, closed_vector)){
 				opened_vector.push_back(child);
 				task_info.nodes[child].path_cost= task_info.nodes[parent_index].path_cost+task_info.distance[parent_index][child];
 				task_info.nodes[child].parent = parent_index;
-                cout << "PUSH: " << task_info.nodes[child].name << endl;
+                // cout << "PUSH: " << task_info.nodes[child].name << endl;
 			}
 			else if(in_vector(child, opened_vector)){
 				if(task_info.nodes[parent_index].path_cost+task_info.distance[parent_index][child]< task_info.nodes[child].path_cost){
@@ -76,7 +76,7 @@ UCS::UCS(Task &task_info)
 					task_info.nodes[child].path_cost= task_info.nodes[parent_index].path_cost+task_info.distance[parent_index][child];
 				    task_info.nodes[child].parent = parent_index;
 				    // this new path to a child is better, set the new path_cost and parent for this child
-                    cout << "update open: " << task_info.nodes[child].name << endl;
+                    // cout << "update open: " << task_info.nodes[child].name << endl;
 				}
 			}else if(in_vector(temp_children[i], closed_vector)){
 				if(task_info.nodes[parent_index].path_cost+task_info.distance[parent_index][child]< task_info.nodes[child].close_path_cost){
@@ -86,7 +86,7 @@ UCS::UCS(Task &task_info)
 					// has a better path for a closed node, recovery it. set new path_cost and parent
 					// remove it from closed_vector
 					remove_from_vector(child, closed_vector);
-                    cout << "get from close: " << task_info.nodes[child].name << endl;
+                    // cout << "get from close: " << task_info.nodes[child].name << endl;
 				}
 				    
 			}

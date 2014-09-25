@@ -57,7 +57,7 @@ Task::Task(const string &inputFileName)
     	 } 
      }
      if (src_flag!=1 || dst_flag!=1){
-	 cout << "bad src/dst index" << endl;
+	 // cout << "bad src/dst index" << endl;
 	 exit(0);
      }
 }

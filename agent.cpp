@@ -11,7 +11,7 @@ int main()
    Task task_info("input.txt");
    task_info_p=&task_info;
 
-   task_info.PrintTaskInfo();
+   //task_info.PrintTaskInfo();
    if (task_info.task == 1){
        BFS bfs(task_info);
        task_info.CheckFinish(bfs.finished);

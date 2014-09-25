@@ -12,7 +12,7 @@ DFS::DFS(Task &task_info)
 	while(!S.empty()){
 		parent_index = S.top();
 		S.pop();
-		cout << "POP: " << task_info.nodes[parent_index].name << endl;
+		//cout << "POP: " << task_info.nodes[parent_index].name << endl;
 	    // put it into virtual close queue
 		task_info.nodes[parent_index].close_path_cost=task_info.nodes[parent_index].path_cost;
 		task_info.nodes[parent_index].in_close=1;
@@ -24,18 +24,18 @@ DFS::DFS(Task &task_info)
 
 		sort_children(parent_index, temp_children);
 		if (temp_children.size()==0){
-			cout << "no children!" << endl;
+			//cout << "no children!" << endl;
 			continue;
 		}
 
 		// real dfs loop
         for(i = temp_children.size()-1; i>=0; i--) {
-            cout << "PUSH " << task_info.nodes[temp_children[i]].name; 
+            //cout << "PUSH " << task_info.nodes[temp_children[i]].name; 
         	S.push(temp_children[i]);
 		    task_info.nodes[temp_children[i]].in_open=1;
         	task_info.nodes[temp_children[i]].parent=parent_index;
         	task_info.nodes[temp_children[i]].path_cost=task_info.nodes[parent_index].path_cost + 1;
-        	cout << " Cost: " << task_info.nodes[temp_children[i]].path_cost << endl;
+        	//cout << " Cost: " << task_info.nodes[temp_children[i]].path_cost << endl;
         }
         temp_children.clear();
     }
