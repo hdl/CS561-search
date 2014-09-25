@@ -82,7 +82,7 @@ void Task::PrintTaskInfo()
 void Task::CheckFinish(bool finished)
 {
 	if(finished == 0){
-		outputFile << "NoPathAvailable" << endl;
+		outputFile << "NoPathAvailable";
 		exit(0);	
 	}
 		
