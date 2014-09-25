@@ -65,6 +65,7 @@ UCS::UCS(Task &task_info)
 				return;
 			}else if(!in_vector(child, opened_vector) && !in_vector(child, closed_vector)){
 				opened_vector.push_back(child);
+				task_info.nodes[child].path_cost= task_info.nodes[parent_index].path_cost+task_info.distance[parent_index][child];
 				task_info.nodes[child].parent = parent_index;
                 cout << "PUSH: " << task_info.nodes[child].name << endl;
 			}

@@ -9,6 +9,8 @@ public:
     bool finished;
     queue<int> expansion_q;    
     BFS(Task &task_info);
+    bool in_vector(int a, vector<int> &nodes_index);
+    bool remove_from_vector(int a, vector<int> &a_vector);
 };
 
 #endif
